@@ -1,0 +1,72 @@
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  /*Color del contenido*/
+  color: rgba(255, 255, 255, 0.87);
+  /* Color (Gris) Background detras del movil*/
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Paleta de colores del proyecto */
+  --color-verde-pantano: #4C9F38;
+  --color-verde-claro: #7ED6A5;
+  --color-azul-suave: #4A90E2;
+  --color-lavanda-claro: #C7B9FF;
+  --color-gris-calido: #F2F2F2;
+  --color-amarillo-suave: #FAD46B;
+
+  /* Altura Header y Navbar */
+  --header-height: 90px; 
+  --navbar-height: 100px;
+
+  /* Fondo claro derivado del Azul Suave */
+  --color-header-bg: color-mix(in srgb, var(--color-azul-suave) 35%, white);
+  --color-navbar-bg: color-mix(in srgb, var(--color-azul-suave) 35%, white);
+  --color-text-strong: #222222;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  place-items: center;
+  min-width: 430px;
+  min-height: 100vh;
+}
+
+/* Layout móvil global 430x932 */
+.app-mobile {
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding-bottom: var(--navbar-height);
+  background: var(--color-gris-calido);
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+

@@ -1,0 +1,46 @@
+
+/* Estilos específicos del componente Navbar */
+.custom-navbar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  height: var(--navbar-height);
+  background-color: var(--color-navbar-bg);
+  z-index: 1030;
+}
+
+.custom-navbar .item {
+  color: var(--color-text-strong);
+  text-decoration: none;
+}
+
+.custom-navbar .label {
+  font-size: 0.9rem;
+  line-height: 1.1;
+}
+
+.custom-navbar .item:hover {
+  color: #646cff;
+  font-weight: 500;
+
+}
+
+/*Centrado  del dropup*/
+.dropup-center.dropup .dropdown-menu {
+  top: auto !important;
+  bottom: 100% !important;
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-50%) !important;
+  margin-bottom: .125rem; 
+}
+
+
+.dropup-center.dropup .dropdown-menu[data-bs-popper] {
+  left: 50% !important;
+  right: auto !important;
+  transform: translateX(-65%) translateY(-15%) !important;
+}

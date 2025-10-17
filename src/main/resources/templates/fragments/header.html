@@ -1,0 +1,34 @@
+<!-- Fragmento Header -->
+<div th:fragment="headerFragment" class="header d-flex align-items-center justify-content-between">
+
+    <!-- Avatar del usuario -->
+    <div class="avatar" aria-label="Perfil">
+        <img th:src="@{/imagenes/img-perfil-usuario.jpg}" alt="Avatar">
+    </div>
+
+    <!-- Botón de configuración -->
+   
+    
+    <!--Dropdown-->
+    <div class="dropstart">
+        <button
+            type="button"
+            class="settingsButton dropdown-toggle"
+            role="button" id="dropdownCuenta" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-gear gear"></i>
+        </button>
+        <!-- las rutas @perfil y @Configuracion aun estan pendientes -->
+        <ul class="dropdown-menu dropdown-menu-start" aria-labelledby="dropdownCuenta">
+            <!-- Solo se muestra si el usuario esta autenticado (Inicio Sesión) -->
+            <li>
+                <form th:action="@{/logout}" method="post" style="display:inline;">
+                    <input type="hidden"/>
+                    <button class="dropdown-item" type="submit">🔓 Cerrar sesión</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+    <!-- Script del Reloj -->
+    <script th:src="@{/js/header.js}"></script>
+</div>
+

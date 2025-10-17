@@ -1,0 +1,47 @@
+<nav th:fragment="navbarFragment" class="navbar border-top custom-navbar">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-around align-items-center w-100 py-2">
+
+            <a th:href="@{/}"
+               class="item d-flex flex-column align-items-center"
+               aria-label="Inicio">
+                <i class="bi bi-house-fill fs-3"></i>
+                <span class="label">Home</span>
+            </a>
+
+            <a th:href="@{/dashboard}"
+               class="item d-flex flex-column align-items-center"
+               aria-label="Actividades">
+                <i class="bi bi-graph-up fs-3"></i>
+                <span class="label">Progreso</span>
+            </a>
+
+            <a th:href="@{/consejos}"
+               class="item d-flex flex-column align-items-center"
+               aria-label="Progreso">
+                <i class="bi bi-hdd-stack fs-3"></i>
+                <span class="label">Consejos</span>
+            </a>
+
+
+            <!--Dropdown-->
+            <div class="dropup-center dropup">
+                <a
+                    class="item d-flex flex-column align-items-center dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    data-bs-display="static"
+                    role="button"
+                    aria-expanded="false">
+                    <i class="bi bi-three-dots fs-3"></i>
+                    <span class="label">Más</span>
+                </a>
+
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-chat-fill"></i> Chat</a></li>
+                    <li><a class="dropdown-item" href="#"><i class="bi bi-camera-video-fill"></i> Videollamada</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</nav>
