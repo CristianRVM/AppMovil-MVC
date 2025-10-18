@@ -1,15 +1,129 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
+<html lang="es" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
     <head>
-        <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>App Movil</title>
+        <!-- CSS BootStrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+              integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <!-- Iconos BootStrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        <!-- Estilos para todo el Documento -->
+        <link rel="stylesheet" th:href="@{/css/main.css}">
+        <!-- CSS Header -->
+        <link rel="stylesheet" th:href="@{/css/header.css}">
+        <!-- CSS del Navbar -->
+        <link rel="stylesheet" th:href="@{css/navbar.css}">
+        <!-- CSS de este HTML home.html -->
+        <link rel="stylesheet" th:href="@{css/dashboard.css}">
+        <!-- echarts -->
+        <script src="https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js"></script>
     </head>
-    <body>
-        <div>TODO write content</div>
+
+    <body class="app-mobile">
+        <!-- Seccion Header -->
+        <header th:replace="fragments/header :: headerFragment"></header>
+        <!-- Fin de la Seccion Header -->
+
+        <main class="page-content">
+            <div class="container px-auto">
+                <div class="row row-cols-1 gy-4">
+                    <!-- 1) Grafico 1 -->
+                    <div class="col">
+                        <section class="dashboard-card border border-5 border-warning ">
+                            <h6 class="mb-2">Dashboard 1</h6>
+                            <div id="bar-chart"></div>
+                            <script type="text/javascript">
+                                // Initialize the echarts instance based on the prepared dom
+                                var myChart = echarts.init(document.getElementById('bar-chart'));
+
+                                // Specify the configuration items and data for the chart
+                                var option = {
+                                    title: {
+                                        text: 'Estado de animo'
+                                    },
+                                    tooltip: {},
+                                    xAxis: {
+                                        data: ['Enero', 'Feb', 'Marzo', 'Abril', 'Junio', 'Julio'],
+
+                                    },
+                                    yAxis: {},
+                                    series: [
+                                        {
+                                            name: 'sales',
+                                            type: 'bar',
+                                            data: [5, 20, 26, 10, 10, 20],
+                                            color: ['#4C9F38']
+                                        }
+                                    ]
+                                };
+
+                                // Display the chart using the configuration items and data just specified.
+                                myChart.setOption(option);
+                            </script>
+                        </section>
+                    </div>
+
+                    <!-- 2) Dashboard 2 -->
+                    <div class="col">
+                        <section class="dashboard-card">
+                            <p>Dashboard 2</p>
+                            <div id="pie-chart"></div>
+                            <script type="text/javascript">
+                              // Initialize the echarts instance based on the prepared dom
+                              var myChart = echarts.init(document.getElementById('pie-chart'));
+                              
+                              // Specify the configuration items and data for the chart
+                              var option = {
+                                title: {
+                                  text: '75%',
+                                  left: 'center',
+                                  top: 'center'
+                                },
+                                tooltip: {
+                                        trigger: 'item',
+                                        formatter: '{b}: {c} ({d}%)'
+                                    },
+                                series: [
+                                  {
+                                    type: 'pie',
+                                    data: [
+                                        {value:90, name: '😔'},
+                                        {value:270, name: '😊'}
+                                    ],
+                                    color: ['#FFF','#7ED6A5'],
+                                    radius: ['40%', '70%']
+                                  }
+                                ]
+                              };
+
+                              // Display the chart using the configuration items and data just specified.
+                              myChart.setOption(option);
+                            </script>
+                        </section>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+
+        <!-- Seccion Navbar -->
+
+        <div th:replace="fragments/navbar :: navbarFragment"></div>
+
+        <!-- JS -->
+        <script th:src="@{/js/estado-de-animo.js}"></script>
+
+        <!-- JS BootStrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+
+        </script>
     </body>
+
 </html>

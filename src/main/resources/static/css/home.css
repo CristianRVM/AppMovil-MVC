@@ -1,12 +1,4 @@
-/* espacio para no quedar debajo del header fijo */
-
-.page-content {
-  padding-top: calc(var(--header-height) + 12px);
-}
-
-
 /* caja base */
-
 .home-card {
   background: var(--color-navbar-bg);
   border-radius: 18px;
@@ -15,8 +7,4 @@
   min-height: 210px;
   min-width: 180px;
 }
-
-/* si quieres que todas las cajas igualen altura por fila */
-.row > .col { display: grid; }
-.row > .col .home-card { height: 100%; }
 

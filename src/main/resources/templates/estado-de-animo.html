@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>App Movil</title>
+        <!-- CSS BootStrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+              integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <!-- Iconos BootStrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        <!-- Estilos para todo el Documento -->
+        <link rel="stylesheet" th:href="@{/css/main.css}">
+        <!-- CSS Header -->
+        <link rel="stylesheet" th:href="@{/css/header.css}">
+        <!-- CSS del Navbar -->
+        <link rel="stylesheet" th:href="@{css/navbar.css}">
+        <!-- CSS de este HTML home.html -->
+        <link rel="stylesheet" th:href="@{css/estado-animo.css}">
+
+    </head>
+
+    <body class="app-mobile">
+        <!-- Seccion Header -->
+        <header th:replace="fragments/header :: headerFragment"></header>
+        <!-- Fin de la Seccion Header -->
+
+        <main class="page-content">
+            <div class="container px-3">
+                <div class="row row-cols-1 gy-4">
+                    <!-- 1) Emojis -->
+                    <div class="col">
+                        <section class="card p-3" id="emoji-card">
+                            <h6 class="mb-2">Elige un emoji</h6>
+                            <div class="emoji-grid" id="emoji-grid"></div>
+                        </section>
+                    </div>
+
+                    <!-- 2) Texto del usuario -->
+                    <div class="col">
+                        <section class="card p-3" id="text-card">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <span class="badge text-bg-primary" id="emoji-preview">🙂</span>
+                                <small class="text-muted">Primero elige un emoji, luego escribe y guarda.</small>
+                            </div>
+                            <h6 class="mb-2 text-center">¿Cuéntame cómo te sientes?</h6>
+                            <textarea id="mood-text" class="form-control" placeholder="Escribe aquí..." rows="4" maxlength="280"></textarea>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <small class="text-muted" id="char-count">0 / 200</small>
+                                <button id="save-btn" class="btn btn-primary">Guardar</button>
+                            </div>
+                        </section>
+                    </div>
+
+                    <!-- 3) Registros -->
+                    <div class="col">
+                        <section class="card p-3" id="list-card">
+                            <h6 class="mb-3">Registros</h6>
+                            <div id="entries" class="entries"></div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+        <!-- Seccion Navbar -->
+
+        <div th:replace="fragments/navbar :: navbarFragment"></div>
+
+        <!-- JS -->
+        <script th:src="@{/js/estado-de-animo.js}"></script>
+        <!-- JS BootStrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+
+        </script>
+    </body>
+
+</html>
