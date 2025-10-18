@@ -33,6 +33,10 @@
   --color-text-strong: #222222;
 }
 
+/* Evita que cambie el ancho al aparecer la barra de scroll */
+html {
+  scrollbar-gutter: stable both-edges;
+}
 
 body {
   margin: 0;
@@ -51,6 +55,13 @@ body {
   min-height: 100vh;
   padding-bottom: var(--navbar-height);
   background: var(--color-gris-calido);
+  overflow: hidden;
+}
+
+/* espacio para no quedar debajo del header fijo */
+.page-content {
+  padding-top: calc(var(--header-height));
+  overflow-y: hidden;
 }
 
 h1 {
@@ -69,4 +80,10 @@ button {
   transition: border-color 0.25s;
 }
 
-
+/* Asegura que los fijos usen ancho relativo al documento, no al viewport */
+header.position-fixed,
+nav.position-fixed {
+  width: 100%;     /* en lugar de 100vw */
+  left: 0;
+  right: 0;
+}

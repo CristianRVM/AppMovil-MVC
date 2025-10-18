@@ -1,0 +1,100 @@
+/* espacio para no quedar debajo del header fijo */
+/* Deja espacio para header y navbar fijos */
+.page-content {
+  padding-top: calc(var(--header-height) + 12px);
+  padding-bottom: 0;
+}
+
+/* Grid de emojis: se acomoda solo */
+.emoji-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(48px, 1fr));
+  gap: 12px;
+}
+
+/* Botón de emoji: simple hover 1.1 */
+.emoji-btn {
+  border: 0;
+  background: transparent;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 6px;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.emoji-btn:hover {
+  transform: scale(1.2);
+}
+
+.emoji-btn.selected {
+  box-shadow: 0 0 0 3px rgba(13,110,253,.35);
+  transform: scale(1.06);
+}
+
+/* Lista de registros: bloques simples */
+.entries { display: grid; gap: 10px; }
+
+.entry {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 10px;
+  align-items: start;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 10px;
+  padding: 10px;
+  background: #fff;
+}
+.entry-emoji { font-size: 28px; }
+.entry-text  { margin: 0; white-space: pre-wrap; }
+.entry-meta {
+  font-size: .8rem;
+  color: #6c757d;
+  text-align: right;
+  display: flex;           /* apila líneas */
+  flex-direction: column;  /* fecha arriba, hora abajo */
+  line-height: 1.1;
+}
+
+
+.empty {
+  text-align: center;
+  color: #6c757d;
+  border: 2px dashed rgba(0,0,0,.08);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+
+
+.card {
+  background: var(--color-navbar-bg);
+  border-radius: 18px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  max-height: 210px;
+  min-width: 400px;
+}
+
+/* La card contenedora no crece más de X px */
+#list-card {
+  max-height: 250px;            /* ajusta al gusto */
+  display: flex;
+  flex-direction: column;
+}
+
+/* El área de registros ocupa el resto y hace scroll vertical */
+#list-card .entries {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 4px;           /* evita que el scroll tape texto */
+}
+
+/* (opcional) Scrollbar suave */
+#list-card .entries::-webkit-scrollbar { width: 8px; }
+#list-card .entries::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,.15);
+  border-radius: 6px;
+}
+
