@@ -17,6 +17,6 @@ public class NavbarControlador {
     
     @GetMapping("/estado-de-animo")
     public String mostrarConsejos() {
-        return "estado-de-animo"; // Busca consejos.html en /templates
+        return "estado-de-animo";   //Busca estado-de-animo.html en /templates
     }
 }

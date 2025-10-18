@@ -6,7 +6,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 100%; /* 430px */
+  max-width: 430px; /* mismo ancho que el layout móvil */
   height: var(--navbar-height);
   background-color: var(--color-navbar-bg);
   z-index: 1030;
