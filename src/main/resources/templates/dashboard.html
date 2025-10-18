@@ -30,13 +30,13 @@
         <!-- Fin de la Seccion Header -->
 
         <main class="page-content">
-            <div class="container px-3">
+            <div class="container px-auto">
                 <div class="row row-cols-1 gy-4">
                     <!-- 1) Grafico 1 -->
                     <div class="col">
-                        <section class="dashboard-card p-3">
+                        <section class="dashboard-card border border-5 border-warning ">
                             <h6 class="mb-2">Dashboard 1</h6>
-                            <div id="bar-chart" style="width: 400px; height:300px;"></div>
+                            <div id="bar-chart"></div>
                             <script type="text/javascript">
                                 // Initialize the echarts instance based on the prepared dom
                                 var myChart = echarts.init(document.getElementById('bar-chart'));
@@ -70,9 +70,9 @@
 
                     <!-- 2) Dashboard 2 -->
                     <div class="col">
-                        <section class="dashboard-card p-3">
+                        <section class="dashboard-card">
                             <p>Dashboard 2</p>
-                            <div id="pie-chart" style="width: 400px; height:300px;"></div>
+                            <div id="pie-chart"></div>
                             <script type="text/javascript">
                               // Initialize the echarts instance based on the prepared dom
                               var myChart = echarts.init(document.getElementById('pie-chart'));
@@ -92,8 +92,8 @@
                                   {
                                     type: 'pie',
                                     data: [
-                                        {value:90, name: 'A'},
-                                        {value:270, name: 'B'}
+                                        {value:90, name: '😔'},
+                                        {value:270, name: '😊'}
                                     ],
                                     color: ['#FFF','#7ED6A5'],
                                     radius: ['40%', '70%']
@@ -114,7 +114,7 @@
 
         <!-- Seccion Navbar -->
 
-        <!-- <div th:replace="fragments/navbar :: navbarFragment"></div> -->
+        <div th:replace="fragments/navbar :: navbarFragment"></div>
 
         <!-- JS -->
         <script th:src="@{/js/estado-de-animo.js}"></script>
