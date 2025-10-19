@@ -37,34 +37,7 @@
                         <section class="dashboard-card border border-5 border-warning ">
                             <h6 class="mb-2">Dashboard 1</h6>
                             <div id="bar-chart"></div>
-                            <script type="text/javascript">
-                                // Initialize the echarts instance based on the prepared dom
-                                var myChart = echarts.init(document.getElementById('bar-chart'));
-
-                                // Specify the configuration items and data for the chart
-                                var option = {
-                                    title: {
-                                        text: 'Estado de animo'
-                                    },
-                                    tooltip: {},
-                                    xAxis: {
-                                        data: ['Enero', 'Feb', 'Marzo', 'Abril', 'Junio', 'Julio'],
-
-                                    },
-                                    yAxis: {},
-                                    series: [
-                                        {
-                                            name: 'sales',
-                                            type: 'bar',
-                                            data: [5, 20, 26, 10, 10, 20],
-                                            color: ['#4C9F38']
-                                        }
-                                    ]
-                                };
-
-                                // Display the chart using the configuration items and data just specified.
-                                myChart.setOption(option);
-                            </script>
+                            <script th:src="@{/js/bar-chart.js}"></script>
                         </section>
                     </div>
 
@@ -73,37 +46,7 @@
                         <section class="dashboard-card">
                             <p>Dashboard 2</p>
                             <div id="pie-chart"></div>
-                            <script type="text/javascript">
-                              // Initialize the echarts instance based on the prepared dom
-                              var myChart = echarts.init(document.getElementById('pie-chart'));
-                              
-                              // Specify the configuration items and data for the chart
-                              var option = {
-                                title: {
-                                  text: '75%',
-                                  left: 'center',
-                                  top: 'center'
-                                },
-                                tooltip: {
-                                        trigger: 'item',
-                                        formatter: '{b}: {c} ({d}%)'
-                                    },
-                                series: [
-                                  {
-                                    type: 'pie',
-                                    data: [
-                                        {value:90, name: '😔'},
-                                        {value:270, name: '😊'}
-                                    ],
-                                    color: ['#FFF','#7ED6A5'],
-                                    radius: ['40%', '70%']
-                                  }
-                                ]
-                              };
-
-                              // Display the chart using the configuration items and data just specified.
-                              myChart.setOption(option);
-                            </script>
+                            <script th:src="@{/js/pie-chart.js}"></script>
                         </section>
                     </div>
 

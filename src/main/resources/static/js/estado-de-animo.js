@@ -1,5 +1,5 @@
 // --- Configuración fácil de editar ---
-const EMOJIS = ["😄", "😊", "🙂", "😐", "😔", "😢", "😡", "😤", "😴", "🤒", "🤗", "🤩", "😱", "🥳"];
+const EMOJIS = ["😄", "😊", "🙂", "😐", "😔", "😢", "😡", "😤", "😴", "🤒", "😱", "🥳"];
 const STORAGE_KEY = "consejos_entries_v1";
 const MAX_CHARS = 200;
 
@@ -25,7 +25,6 @@ function renderEmojis() {
         btn.type = "button";
         btn.className = "emoji-btn";
         btn.textContent = e;
-        btn.title = `Elegir ${e}`;
         btn.onclick = () => {
             // limpiar selección previa
             emojiGrid.querySelectorAll(".emoji-btn.selected").forEach(b => b.classList.remove("selected"));
