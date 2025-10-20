@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 
 /* @author NITRO 5 */
 @Entity
-@Table(name="usuarios")
+@Table(name="Usuario")
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
