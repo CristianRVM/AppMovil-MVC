@@ -38,17 +38,17 @@ public class ConfigSeguridad {
                 .requestMatchers("/admin-dashboard", "/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 )
-                // FORM LOGIN por defecto (comentamos la configuración personalizada)
-                .formLogin();
 
-        /*
                 // Configuración propia de Login
-                    .formLogin(form -> form
-                        .loginPage("/login") // Usará tu página personalizada en /login
-                        .permitAll() // Permite acceso sin autenticación a /login
-                        .successHandler(successHandlerOK()) // Al login exitoso, ejecuta redirección
-                    );
-         */
+                .formLogin(form -> form
+                    .loginPage("/login") // Usará tu página personalizada en /login
+                    .loginProcessingUrl("/login")
+                    .usernameParameter("email")      // <--- CLAVE
+                    .passwordParameter("password")
+                    .successHandler(successHandlerOK()) // Al login exitoso, ejecuta redirección
+                    .permitAll() // Permite acceso sin autenticación a /login
+                );
+
         //Construye el objeto SecurityFilterChain 
         return http.build();
     }

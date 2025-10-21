@@ -20,8 +20,8 @@ public class UserDetailsServiceImp implements UserDetailsService {
     
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = usuarioDAO.findByNombre(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Usuario usuario = usuarioDAO.findByCorreo(email); // SQL Busca por Correo
         
         if (usuario == null){
             throw new UsernameNotFoundException("Usuario no encontrado");
@@ -32,9 +32,9 @@ public class UserDetailsServiceImp implements UserDetailsService {
         }
         
         return User.builder()
-                .username(username)
+                .username(email) // Utiliza correo como username
                 .password(usuario.getContrasenia())
-                .roles(usuario.getRol())
+                .roles(usuario.getRol()) // ADMIN, USER
                 .build();
     }
     
