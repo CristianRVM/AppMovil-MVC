@@ -1,6 +1,7 @@
 package com.example.AppMovil.Servicio;
 
 import com.example.AppMovil.DTO.CrearEstadoDTO;
+import com.example.AppMovil.DTO.ResumenEmocionDTO;
 import com.example.AppMovil.Entidad.EstadoDeAnimo;
 import com.example.AppMovil.Respositorio.EmocionRepositorio;
 import com.example.AppMovil.Respositorio.EstadoDeAnimoRepositorio;
@@ -63,7 +64,24 @@ public class EstadoDeAnimoServicio {
     public void eliminar(Long id) {
         estadoDeAnimoRepositorio.deleteById(id);
     }
-    
+
+    @Transactional(readOnly = true)
+    public List<ResumenEmocionDTO> resumenPorUltimosDias(Integer idUsuario, int days) {
+        var desde = java.time.LocalDateTime.now().minusDays(days);
+        usuarioRepositorio.findById(idUsuario)
+                .orElseThrow(() -> new IllegalArgumentException("Usuario no existe"));
+
+        var rows = estadoDeAnimoRepositorio.resumenUltimosDiasNative(idUsuario, desde);
+        return rows.stream()
+                .map(r -> new ResumenEmocionDTO(
+                (String) r[0], // emoji
+                (String) r[1], // code
+                ((Number) r[2]).longValue() // total
+        ))
+                .toList();
+    }
+
+
     /*Wrappers*/
     @Transactional(readOnly = true)
     public List<EstadoDeAnimo> listar(Integer idUsuario) {

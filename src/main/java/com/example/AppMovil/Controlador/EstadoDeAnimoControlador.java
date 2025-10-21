@@ -2,6 +2,7 @@ package com.example.AppMovil.Controlador;
 
 import com.example.AppMovil.DTO.CrearEstadoDTO;
 import com.example.AppMovil.DTO.EstadoRespuestaDTO;
+import com.example.AppMovil.DTO.ResumenEmocionDTO;
 import com.example.AppMovil.Servicio.EstadoDeAnimoServicio;
 import java.util.List;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -61,4 +62,12 @@ public class EstadoDeAnimoControlador {
     public void eliminar(@PathVariable Long id) {
         servicio.eliminar(id);
     }
+
+    @GetMapping("/resumen")
+    public List<ResumenEmocionDTO> resumen(
+            @RequestParam Integer usuarioId,
+            @RequestParam(defaultValue = "30") int days) {
+        return servicio.resumenPorUltimosDias(usuarioId, days);
+    }
+
 }

@@ -1,10 +1,50 @@
 /* caja base */
 .home-card {
-  background: var(--color-navbar-bg);
-  border-radius: 18px;
-  padding: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,.06);
-  min-height: 210px;
-  min-width: 180px;
+
+    background: var(--color-navbar-bg);
+    border-radius: 18px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    min-width: 180px;
+    min-height: 420px;
+}
+
+/* caja pequeña*/
+.small-home-card {
+    background: var(--color-navbar-bg);
+    border-radius: 18px;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    min-width: 180px;
+    min-height: 210px;
+}
+
+/* CSS Dashboard*/
+/* El contenedor del chart no debe generar scroll */
+#bar-chart, #pie-chart {
+    position: relative;
+    overflow: hidden;
+    width: 400px;
+    height:300px;
+    padding:0;
+}
+
+.dashboard-title{
+    color:#fff;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.consejos-title{
+    color:#fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content:space-between;
+}
+
+.consejos-text{
+    color:#79716B;
 }
 
