@@ -48,3 +48,8 @@
     color:#79716B;
 }
 
+a > .bi-camera-video,
+a > .bi-chat{
+    color: #fff;
+    text-decoration: none;
+}

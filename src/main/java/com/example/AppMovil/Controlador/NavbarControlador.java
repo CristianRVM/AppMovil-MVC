@@ -19,4 +19,14 @@ public class NavbarControlador {
     public String mostrarConsejos() {
         return "estado-de-animo";   //Busca estado-de-animo.html en /templates
     }
+    
+    @GetMapping("/chat")
+    public String mostrarChat() {
+        return "chat"; // Busca chat.html en /templates
+    }
+    
+    @GetMapping("/videollamada")
+    public String mostrarVideollamada() {
+        return "chat"; // Busca videollamada.html en /templates
+    }
 }
