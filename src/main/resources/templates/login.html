@@ -1,15 +1,84 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
+<html lang="es" 
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
     <head>
-        <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>App Movil</title>
+        <!-- CSS BootStrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" 
+              integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <!-- Iconos BootStrap -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+        <!-- Estilos para todo el Documento -->
+        <link rel="stylesheet" th:href="@{/css/main.css}">
+        <!-- CSS de Login -->
+        <link rel="stylesheet" th:href="@{/css/login.css}">
+        <!-- echarts -->
+        <script src="https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js"></script>
     </head>
-    <body>
-        <div>TODO write content</div>
+
+    <body class="app-mobile">
+        <div class="login-container d-flex align-items-center justify-content-center border border-2 border-primary">
+            <div class="card w-100">
+                <div class="card-body">
+                    <!-- Logo / Imagen superior -->
+                    <div class="d-flex justify-content-center mb-3">
+                        <img class="rounded-circle" th:src="@{/imagenes/Logo-App.png}" alt="Logo-App" style="width:120px;height:120px;">
+                    </div>
+
+                    <hr class="my-3">
+
+                    <!-- Formulario -->
+                    <form th:action="@{/login}" method="post">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Correo</label>
+                            <input type="text" 
+                                   class="form-control rounded-3" 
+                                   id="email" 
+                                   placeholder="tucorreo@ejemplo.com"
+                                   name="email"
+                                   required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" 
+                                   class="form-control rounded-3" 
+                                   id="password"
+                                   name="password"
+                                   required>
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input class="form-check-input" type="checkbox" id="remember">
+                            <label class="form-check-label" for="remember">
+                                Guardar datos de Inicio de Sesión
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-success w-100 py-2 rounded-3">
+                            Iniciar Sesión
+                        </button>
+                    </form>
+
+                    <!-- Enlace de registro -->
+                    <p class="text-center mt-4 mb-0">
+                        ¿No tienes una Cuenta?
+                        <a th:href="@{/registrar}" class="link-primary text-decoration-none">Regístrate</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- JS BootStrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
+                integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
+
+        </script>
     </body>
+
 </html>

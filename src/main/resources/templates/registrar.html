@@ -1,15 +1,77 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
     <head>
-        <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registro</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" th:href="@{/css/main.css}">
+        <link rel="stylesheet" th:href="@{/css/login.css}">
     </head>
-    <body>
-        <div>TODO write content</div>
+
+    <body class="app-mobile">
+        <!-- Ocupa toda la pantalla y sin bordes redondeados -->
+        <div class="login-container d-flex align-items-center justify-content-center login-no-rounded">
+            <div class="card w-100 border-0 rounded-0 shadow-none">
+                <div class="card-body d-flex flex-column align-items-center">
+
+                    <!-- Logo -->
+                    <div class="d-flex justify-content-center mb-3">
+                        <img class="rounded-circle" th:src="@{/imagenes/Logo-App.png}" alt="Logo" style="width:120px;height:120px;">
+                    </div>
+
+                    <hr class="my-3 w-100">
+
+                    <!-- Título -->
+                    <div class="text-center mb-3">
+                        <h4 class="mb-1">¡Hola!</h4>
+                        <h5 class="fw-bold mb-0">Regístrate para empezar</h5>
+                    </div>
+
+                    <!-- Contenedor del formulario -->
+                    <div class="w-100" style="max-width: 420px;">
+                        <form th:action="@{/registrar}" method="post" th:object="${form}">
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+                            <div class="mb-2">
+                                <label class="form-label">Nombre de Usuario</label>
+                                <input type="text" class="form-control" th:field="*{nombre}" required>
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label">Correo</label>
+                                <input type="email" class="form-control" th:field="*{correo}" required>
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" th:field="*{password}" required>
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label">Confirmar Contraseña</label>
+                                <input type="password" class="form-control" th:field="*{confirmPassword}" required>
+                            </div>
+
+                            <button class="btn btn-success w-100 py-2" type="submit">Registrar</button>
+
+                            <p class="text-danger mt-3" th:if="${error}" th:text="${error}"></p>
+                        </form>
+
+
+                        <!-- Enlace a login -->
+                        <p class="text-center mt-4 mb-0">¿Ya tienes una cuenta?</p>
+                        <p class="text-center">
+                            <a th:href="@{/login}" class="link-primary text-decoration-none">Inicia sesión</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>

@@ -1,0 +1,14 @@
+.login-container{
+    width: 100%;
+    padding:0;
+}
+
+.login-container > .card{
+    height: 100vh;
+}
+
+.card-body{
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+

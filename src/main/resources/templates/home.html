@@ -20,7 +20,8 @@
         <link rel="stylesheet" th:href="@{/css/navbar.css}">
         <!-- CSS de este HTML home.html -->
         <link rel="stylesheet" th:href="@{/css/home.css}">
-
+        <!-- echarts -->
+        <script src="https://cdn.jsdelivr.net/npm/echarts@6.0.0/dist/echarts.min.js"></script>
     </head>
 
     <body class="app-mobile">
@@ -29,18 +30,56 @@
         <!-- Fin de la Seccion Header -->
 
         <main class="page-content">
-            <div class="container px-3">
-                <div class="row row-cols-2 gx-3 gy-4">
-                    <div class="col"><section class="home-card"></section></div>
-                    <div class="col"><section class="home-card"></section></div>
+            <div class="container">
+                <!-- Fila 1 -->
+                <div class="row py-4">
+                    <div class="col">
+                        <section class="home-card">
+                            <p class="dashboard-title">Estado Emocional</p>
+                            <div id="pie-chart"></div>
+                            <script th:src="@{/js/pie-chart.js}"></script>
+                        </section>
+                    </div>
+                </div>
 
-                    <div class="col"><section class="home-card"></section></div>
-                    <div class="col"><section class="home-card"></section></div>
+                <!-- Fila 2 -->
+                <div class="row row-cols-2 gx-4 gy-4">
+                    <!-- Consejos -->
+                    <div class="col">
+                        <section class="small-home-card">
+                            <p class="consejos-title fs-5"><span>Consejos</span><span>🧘‍♀ 💛️</span></p>
+                            <p class="consejos-text">Construye Habitos Saludables y procura tratarte ti mismo como lo harias con un amigo</p>
+                        </section>
+                    </div>
+                    <!-- Opciones ( Chat & Videollamada) -->
+                    <div class="col">
+                        <section class="small-home-card">
+                            <div class="text-center fs-5 fw-bold text-light mb-3">Sesión Online</div>
 
-                    <div class="col"><section class="home-card"></section></div>
-                    <div class="col"><section class="home-card"></section></div>
+                            <div class="d-flex align-items-center gap-2 mb-3">
+                                <div class="bg-success text-white rounded-3 d-flex flex-column align-items-center justify-content-center"
+                                     style="width:80px;height:80px;">
+                                    <!-- ícono chat-->
+                                    <a th:href="@{@{/chat}}"><i class="bi bi-chat fs-1"></i></a>
+                                    <small class="lh-1 mt-1">CHAT</small>
+                                </div>
+
+                                <!-- Foto profesional -->
+                                <img th:src="@{imagenes/img-perfil-profesional.jpg}" alt="Profesional"
+                                     class="rounded-3 flex-shrink-0"
+                                     style="width:80px;height:80px;object-fit:cover;">
+                            </div>
+
+                            <!-- Botón Videollamada -->
+                            <button type="button" class="btn btn-primary w-100 rounded-3 d-flex align-items-center justify-content-center gap-2 p-2">
+                                <a><i class="bi bi-camera-video"></i></a>
+                                <span class="fw-medium">VIDEOLLAMADA</span>
+                            </button>
+                        </section>
+                    </div>
                 </div>
             </div>
+
         </main>
 
 

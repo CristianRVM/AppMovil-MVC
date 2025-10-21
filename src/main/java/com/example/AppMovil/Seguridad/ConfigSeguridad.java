@@ -8,17 +8,18 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 public class ConfigSeguridad {
+
     private final UserDetailsServiceImp userDetailsService;
-    
+
     //Constructor
-    public ConfigSeguridad(UserDetailsServiceImp userDetailsService){
+    public ConfigSeguridad(UserDetailsServiceImp userDetailsService) {
         this.userDetailsService = userDetailsService;
     }
-    
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
@@ -26,30 +27,29 @@ public class ConfigSeguridad {
         http
                 // Autenticación: usa mi UserDetailsService para cargar usuarios desde BD
                 .userDetailsService(userDetailsService) // <-- Enlaza al userDetailsService
+                //Desactiva CSRF solo para API REST
+                .csrf(csrf -> csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/api/**")))
                 // Autorización: define quién accede a qué rutas
                 .authorizeHttpRequests(auth -> auth
-                    .requestMatchers("/", "/**").permitAll()
-                    .requestMatchers("/login**","/registrar", "/uploaded-images/**").permitAll()
-                    .requestMatchers("/css/**", "/js/**", "/imagenes/**").permitAll()
-                    .requestMatchers("/admin-dashboard", "/admin/**").hasRole("ADMIN")
-                    .anyRequest().authenticated()
+                .requestMatchers("/", "/**").permitAll()
+                .requestMatchers("/login**", "/registrar", "/uploaded-images/**").permitAll()
+                .requestMatchers("/css/**", "/js/**", "/imagenes/**").permitAll()
+                .requestMatchers("/api/**").permitAll()
+                .requestMatchers("/admin-dashboard", "/admin/**").hasRole("ADMIN")
+                .anyRequest().authenticated()
                 )
-                // FORM LOGIN por defecto (comentamos la configuración personalizada)
-                .formLogin(); 
-        
-                /*
+
                 // Configuración propia de Login
-                    .formLogin(form -> form
-                        .loginPage("/login") // Usará tu página personalizada en /login
-                        .permitAll() // Permite acceso sin autenticación a /login
-                        .successHandler(successHandlerOK()) // Al login exitoso, ejecuta redirección
-                    );
-                */
-        /* Protege contra fijación de sesión (session fixation)
-         No usar session Fixation esta depreado en SpringSecurity6
-         en Spring Security 6+ se migra el ID por defecto */
-        
-    //Construye el objeto SecurityFilterChain 
+                .formLogin(form -> form
+                    .loginPage("/login") // Usará tu página personalizada en /login
+                    .loginProcessingUrl("/login")
+                    .usernameParameter("email")      // <--- CLAVE
+                    .passwordParameter("password")
+                    .successHandler(successHandlerOK()) // Al login exitoso, ejecuta redirección
+                    .permitAll() // Permite acceso sin autenticación a /login
+                );
+
+        //Construye el objeto SecurityFilterChain 
         return http.build();
     }
 
@@ -58,10 +58,10 @@ public class ConfigSeguridad {
             response.sendRedirect("/");
         };
     }
-    
+
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
 }
