@@ -7,7 +7,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-/* @author NITRO 5 */
 @Entity
 @Table(name = "Usuario")
 public class Usuario {

@@ -18,9 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/estados")
 public class EstadoDeAnimoControlador {
 
-    private final EstadoDeAnimoServicio servicio; // ✅ nombre correcto
+    private final EstadoDeAnimoServicio servicio;
 
-    // ✅ inyección por constructor
     public EstadoDeAnimoControlador(EstadoDeAnimoServicio servicio) {
         this.servicio = servicio;
     }

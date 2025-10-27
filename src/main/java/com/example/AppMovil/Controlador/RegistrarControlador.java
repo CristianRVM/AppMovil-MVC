@@ -3,7 +3,6 @@ package com.example.AppMovil.Controlador;
 import com.example.AppMovil.DTO.RegistroDTO;
 import com.example.AppMovil.Servicio.UsuarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +21,9 @@ public class RegistrarControlador {
         return "registrar";
     }
 
-    @PostMapping("/registrar") // <-- asegura la barra inicial
+    @PostMapping("/registrar")
     public String registrarUsuario(@ModelAttribute("form") RegistroDTO form, Model model) {
-        // ✅ Validación simple
+        //Validación
         if (form.getNombre() == null || form.getNombre().isBlank()
                 || form.getCorreo() == null || form.getCorreo().isBlank()
                 || form.getPassword() == null || form.getPassword().isBlank()

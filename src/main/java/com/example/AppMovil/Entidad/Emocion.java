@@ -13,7 +13,7 @@ public class Emocion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEmocion;
 
-    @Column(nullable = false)     // obligatorio, pero no necesita unique
+    @Column(nullable = false)
     private String code;
 
     @Column(nullable = false)
@@ -22,8 +22,8 @@ public class Emocion {
     @Column(nullable = false)
     private String emoji;
 
-    // getters/setters
-
+    
+    // Getters & Setters
     public Integer getIdEmocion() {
         return idEmocion;
     }

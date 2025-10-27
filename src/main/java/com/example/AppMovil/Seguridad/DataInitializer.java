@@ -3,7 +3,6 @@ package com.example.AppMovil.Seguridad;
 import com.example.AppMovil.Entidad.Usuario;
 import com.example.AppMovil.Respositorio.UsuarioRepositorio;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -15,8 +14,6 @@ public class DataInitializer implements CommandLineRunner {
     private UsuarioRepositorio usuarioDAO;
     private PasswordEncoder  passwordEncoder;
     
-    // Insercion de Dependencias
-
     public DataInitializer(UsuarioRepositorio usuarioDAO, PasswordEncoder  passwordEncoder) {
         this.usuarioDAO = usuarioDAO;
         this.passwordEncoder = passwordEncoder;
@@ -35,7 +32,7 @@ public class DataInitializer implements CommandLineRunner {
             admin.setEstado(true);
             
             usuarioDAO.save(admin);
-            System.out.println("✅ Usuario ADMIN creado");
+            System.out.println("Usuario ADMIN creado");
         }
     }
     

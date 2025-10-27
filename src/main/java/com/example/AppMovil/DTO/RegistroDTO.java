@@ -7,8 +7,8 @@ public class RegistroDTO {
     private String correo;
     private String password;
     private String confirmPassword;
-    // getters/setters
-
+    
+    // Getters & Setters
     public String getNombre() {
         return nombre;
     }

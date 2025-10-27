@@ -30,7 +30,7 @@ public class EstadoDeAnimo {
   @Column(nullable=false) 
   private LocalDateTime creadoEn = LocalDateTime.now();
   
-  // getters/setters
+    // Getters & Setters
     public Long getIdEstadoDeAnimo() {
         return idEstadoDeAnimo;
     }
