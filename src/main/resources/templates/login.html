@@ -23,6 +23,11 @@
     <body class="app-mobile-login">
         <div class="login-container d-flex align-items-center justify-content-center">
             <div class="card w-100">
+                <!-- Alerta de error en inicio de sesión -->
+                <div th:if="${param.error}" id="alertError" class="alert alert-danger mt-3" role="alert">
+                    Usuario o contraseña incorrectos
+                </div>
+
                 <div class="card-body">
                     <!-- Logo / Imagen superior -->
                     <div class="d-flex justify-content-center mb-3">
@@ -74,6 +79,9 @@
             </div>
         </div>
 
+        <!-- JS -->
+        <script th:src="@{/js/login.js}"></script>
+        
         <!-- JS BootStrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" 
                 integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
