@@ -45,6 +45,7 @@ public class ConfigSeguridad {
                     .usernameParameter("email") 
                     .passwordParameter("password")
                     .successHandler(successHandlerOK()) // Al login exitoso, ejecuta redirección
+                    .failureUrl("/login?error=true") // Cuando Exiten Errores al iniciar Sesión
                     .permitAll() // Permite acceso sin autenticación a /login
                 );
 
