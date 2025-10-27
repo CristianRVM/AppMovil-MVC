@@ -29,21 +29,20 @@ public class ConfigSeguridad {
                 .userDetailsService(userDetailsService) // <-- Enlaza al userDetailsService
                 //Desactiva CSRF solo para API REST
                 .csrf(csrf -> csrf.ignoringRequestMatchers(new AntPathRequestMatcher("/api/**")))
-                // Autorización: define quién accede a qué rutas
+                // Autorización
                 .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/**").permitAll()
                 .requestMatchers("/login**", "/registrar", "/uploaded-images/**").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/imagenes/**").permitAll()
                 .requestMatchers("/api/**").permitAll()
-                .requestMatchers("/admin-dashboard", "/admin/**").hasRole("ADMIN")
+                .requestMatchers("/", "/**").hasRole("USER")
                 .anyRequest().authenticated()
                 )
 
                 // Configuración propia de Login
                 .formLogin(form -> form
-                    .loginPage("/login") // Usará tu página personalizada en /login
+                    .loginPage("/login")
                     .loginProcessingUrl("/login")
-                    .usernameParameter("email")      // <--- CLAVE
+                    .usernameParameter("email") 
                     .passwordParameter("password")
                     .successHandler(successHandlerOK()) // Al login exitoso, ejecuta redirección
                     .permitAll() // Permite acceso sin autenticación a /login
