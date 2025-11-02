@@ -47,7 +47,7 @@ INSERT INTO Consejo (contenido) VALUES
 ('Organiza tus tareas por prioridad y permítete avanzar paso a paso sin presionarte.'),
 ('Comparte cómo te sientes con alguien de confianza y escucha también su perspectiva.'),
 ('Reserva un momento para estirarte suavemente y agradecer lo que tu cuerpo permite.'),
-('Practica tres respiraciones profundas contando hasta cuatro y suelta el aire lentamente.'),
+('Recuerda que avanzar también significa descansar cuando tu mente y tu corazón lo necesitan.'),
 ('Escribe en una nota tres cosas pequeñas que te hicieron sonreír durante el día.'),
 ('Prepara una bebida caliente, bébela despacio y concéntrate en su aroma y temperatura.'),
 ('Pon tu canción favorita, canta o mueve el cuerpo y deja que la energía fluya libremente.'),
@@ -55,11 +55,10 @@ INSERT INTO Consejo (contenido) VALUES
 ('Abraza tu ritmo actual, reconoce tus logros recientes y celebra tu esfuerzo constante.'),
 ('Elige una afirmación amable, repítela frente al espejo y mírate con respeto genuino.'),
 ('Dedica cinco minutos a ordenar tu rincón favorito y hazlo acogedor para tu descanso.'),
-('Observa tu respiración antes de dormir y agradece lo aprendido en la jornada de hoy.'),
+('Permítete sentir sin juzgar, porque cada emoción también forma parte de tu equilibrio interior'),
 ('Sustituye un pensamiento autocrítico por uno compasivo que impulse tu bienestar.'),
 ('Planifica una actividad que te entusiasme para mañana y regálate esa motivación extra.');
 
--- 12 emociones (mapea tu UI 1:1)
 INSERT INTO Emocion (code,nombre,emoji) VALUES
 ('muy_feliz','Muy feliz','😄'),
 ('feliz','Feliz','😊'),

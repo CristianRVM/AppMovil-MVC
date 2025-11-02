@@ -22,17 +22,17 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if(usuarioDAO.countByRol("ADMIN") == 0){
+        if(usuarioDAO.countByRol("USER") == 0){
             Usuario admin = new Usuario();
             
-            admin.setNombre("Admin");
-            admin.setCorreo("admin@example.com");
-            admin.setContrasenia(passwordEncoder.encode("admin123"));
-            admin.setRol("ADMIN");
+            admin.setNombre("UsuarioPrueba");
+            admin.setCorreo("test@example.com");
+            admin.setContrasenia(passwordEncoder.encode("123"));
+            admin.setRol("USER");
             admin.setEstado(true);
             
             usuarioDAO.save(admin);
-            System.out.println("Usuario ADMIN creado");
+            System.out.println("Usuario de Prueba creado");
         }
     }
     
