@@ -2,9 +2,6 @@
 const EMOJIS = ["😄", "😊", "🙂", "😐", "😔", "😢", "😡", "😤", "😴", "🤒", "😱", "🥳"];
 const MAX_CHARS = 200;
 
-// ⚠️ Ajusta este ID al del usuario autenticado
-const USER_ID = 1;
-
 // mapa emoji -> code (debe coincidir con la tabla Emocion)
 const EMOJI_TO_CODE = {
   "😄": "muy_feliz",
@@ -32,18 +29,22 @@ const entriesWrap = document.getElementById("entries");
 let selectedEmoji = null;
 
 // --- API Backend ---
-async function apiListarEstados(usuarioId) {
-  const res = await fetch(`/api/estados?usuarioId=${encodeURIComponent(usuarioId)}`);
+async function apiListarEstados() {
+  const res = await fetch(`/api/estados`);
+  if (res.status === 401) {
+    window.location.href = "/login";
+    return [];
+  }
   if (!res.ok) throw new Error("No se pudo listar estados");
   return res.json(); // [{id, emoji, emocion, texto, ts}, ...]
 }
 
-async function apiCrearEstado({ idUsuario, emoji, texto }) {
+async function apiCrearEstado({ emoji, texto }) {
   const code = EMOJI_TO_CODE[emoji];
   const res = await fetch("/api/estados", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ idUsuario, code, texto }),
+    body: JSON.stringify({ code, texto }),
   });
   if (!res.ok) throw new Error("No se pudo guardar el estado");
   return res.json(); // id generado
@@ -81,7 +82,7 @@ async function handleSave() {
   if (text.length > MAX_CHARS) return alert(`Máximo ${MAX_CHARS} caracteres.`);
 
   try {
-    await apiCrearEstado({ idUsuario: USER_ID, emoji: selectedEmoji, texto: text });
+    await apiCrearEstado({ emoji: selectedEmoji, texto: text });
     textArea.value = "";
     charCount.textContent = `0 / ${MAX_CHARS}`;
     await renderEntries(); // recarga desde servidor
@@ -94,7 +95,7 @@ async function handleSave() {
 // --- Render de la lista (desde servidor) ---
 async function renderEntries() {
   try {
-    const entries = await apiListarEstados(USER_ID);
+    const entries = await apiListarEstados();
 
     if (!entries.length) {
       entriesWrap.innerHTML = `<div class="empty">Aún no hay registros</div>`;
