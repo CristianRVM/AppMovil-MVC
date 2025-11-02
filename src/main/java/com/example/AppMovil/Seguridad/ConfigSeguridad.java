@@ -33,7 +33,7 @@ public class ConfigSeguridad {
                 .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/login**", "/registrar", "/uploaded-images/**").permitAll()
                 .requestMatchers("/css/**", "/js/**", "/imagenes/**").permitAll()
-                .requestMatchers("/api/**").permitAll()
+                .requestMatchers("/api/**").authenticated()
                 .requestMatchers("/", "/**").hasRole("USER")
                 .anyRequest().authenticated()
                 )

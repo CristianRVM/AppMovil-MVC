@@ -47,8 +47,12 @@ const EMOJI_TO_NAME = {
 
   pieChart.setOption(option);
 
-  async function cargarPie(usuarioId, days = 30) {
-    const res = await fetch(`/api/estados/resumen?usuarioId=${usuarioId}&days=${days}`);
+  async function cargarPie(days = 30) {
+    const res = await fetch(`/api/estados/resumen?days=${days}`);
+    if (res.status === 401) {
+      window.location.href = "/login";
+      return;
+    }
     if (!res.ok) return console.error('No se pudo obtener resumen');
     const data = await res.json();
 
@@ -62,7 +66,7 @@ const EMOJI_TO_NAME = {
     });
   }
 
-  cargarPie(1, 30);
+  cargarPie(30);
 })();
 
 

@@ -28,8 +28,8 @@ public class EstadoDeAnimoServicio {
     }
 
     @Transactional
-    public Long crear(CrearEstadoDTO dto) {
-        var usuario = usuarioRepositorio.findById(dto.idUsuario)
+    public Long crear(Integer idUsuario, CrearEstadoDTO dto) {
+        var usuario = usuarioRepositorio.findById(idUsuario)
                 .orElseThrow(() -> new IllegalArgumentException("Usuario no existe"));
         var emocion = emocionRepositorio.findByCode(dto.code)
                 .orElseThrow(() -> new IllegalArgumentException("Emoción no válida"));
