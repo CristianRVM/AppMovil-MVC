@@ -24,15 +24,37 @@ function addMsg({ text, type }) {
   chatBody.scrollTop = chatBody.scrollHeight;
 }
 
+const respuestasIA = [
+  "Hola, soy Zen 🌿. Gracias por escribir, ¿qué te gustaría compartir hoy?",
+  "Te leo con calma. ¿Quieres contarme un poco más sobre cómo te sientes?",
+  "Estoy aquí para acompañarte. ¿Qué ha sido lo más difícil de tu día?",
+  "Gracias por confiar en mí. ¿Te gustaría que pensemos juntos alguna opción?",
+  "A veces ayuda hacer una pausa breve y respirar profundo un par de veces. ¿Quieres intentarlo conmigo?",
+  "Si tu día ha sido pesado, una buena opción es identificar una sola cosa pequeña que puedas hacer para sentirte un poquito mejor.",
+  "Algo que suele ayudar es poner en palabras lo que sientes. No tiene que sonar perfecto, solo auténtico.",
+  "Fue un gusto ayudarte hoy, nos vemos luego 😊👋",
+];
+
+let indiceRespuesta = 0;
+
+function obtenerRespuestaIA() {
+  const texto = respuestasIA[indiceRespuesta];
+  indiceRespuesta = (indiceRespuesta + 1) % respuestasIA.length; // vuelve al inicio
+  return texto;
+}
+
+
+
+
 // ✅ mostrar primer mensaje de Zen al cargar
 window.addEventListener('DOMContentLoaded', () => {
   addMsg({
     type: 'ai',
-    text: `Hola, soy Zen, tu guía de bienestar emocional 🌿.
-¿Cómo te sientes hoy o en qué puedo apoyarte?`
+    text: obtenerRespuestaIA()
   });
   actualizarContador(); // inicializa el texto con 0 de 15
 });
+
 
 // ✅ evento de envío de mensaje
 chatForm.addEventListener('submit', (e) => {
@@ -53,13 +75,12 @@ chatForm.addEventListener('submit', (e) => {
   chatInput.value = '';
 
   // respuesta automática de Zen
-  setTimeout(() => {
-    addMsg({
-      type: 'ai',
-      text: `Hola, soy Zen, tu guía de bienestar emocional 🌿.
-¿Cómo te sientes hoy o en qué puedo apoyarte?`
-    });
-  }, 400);
+setTimeout(() => {
+  addMsg({
+    type: 'ai',
+    text: obtenerRespuestaIA()
+  });
+}, 400);
 });
 
 
