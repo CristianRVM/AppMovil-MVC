@@ -18,7 +18,7 @@ function addMsg({ text, type }) {
   msg.innerHTML = `
     ${type === 'ai' ? `<img class="avatar" src="/imagenes/Logo-App.png" alt="IA">` : ''}
     <div class="bubble">${text}</div>
-    ${type === 'user' ? `<img class="avatar" src="/imagenes/img-perfil-usuario.jpg" alt="Yo">` : ''}
+    ${type === 'user' ? `<img class="avatar" src="/imagenes/perfil-usuario.png" alt="Yo">` : ''}
   `;
   chatBody.appendChild(msg);
   chatBody.scrollTop = chatBody.scrollHeight;
